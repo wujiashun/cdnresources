@@ -8,7 +8,7 @@
 	<body>
 		<div class="video" style="width: 100%; height: 500px;">播放容器</div>
 		<script>
-		//获取参数值
+//获取参数值
 		var getParameters = function() {
         var search = window.location.search;
         var obj = {};
@@ -26,11 +26,25 @@
         }
         return obj;
     }
+function checkAndAlert(variable) {
+  // 判断变量是否为空（null、undefined、空字符串）
+  if (!variable) {
+    // 弹出消息框
+    alert("必要参数为空：url，poster");
+    // 停止代码执行
+    return;
+  }
+  // 如果变量不为空，继续执行其他代码
+  console.log("变量不为空，继续执行其他代码。");
+}
+
+checkAndAlert(obj.url);
+checkAndAlert(obj.poster);
 			//调用开始
-		var art = new Artplayer({
+    var art = new Artplayer({
     container: '.video',
-    url: getParameters.url,
-    poster: getParameters.poster,
+    url: obj.url,
+    poster: obj.poster,
     volume: 0.5,//默认音量
     isLive: false,//是否直播，隐藏进度条 
     muted: false,//是否默认静音
